@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Trixxy Store</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-image: linear-gradient(to right, pink, purple);
+    }
+    
+    #title {
+      position: absolute;
+      top: px;
+      left: 10px;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+      background-image: linear-gradient(to right, pink, purple);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    
+    #discord-button {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background-image: linear-gradient(to right, pink, purple);
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    }
+    
+    hr {
+      position: absolute;
+      top: 50px;
+      left: 0;
+      width: 100%;
+      border: none;
+      height: 3px;
+      background-image: linear-gradient(to right, pink, purple);
+    }
+    
+    #logo {
+      position: absolute;
+      top: 35%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 400px;
+      font-weight: bold;
+      background-image: linear-gradient(to right, pink, purple);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    #store-page {
+      position: fixed;
+      top: 78%;
+      left: 50%;
+      background-image: linear-gradient(to right, pink, purple);
+      transform: translate(-50%, -50%);
+      text-align: center;
+      font-size: 20px;
+      width: 800px;
+      height: 350px; /* Adjust the height as per your preference */
+      background-color: white;
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+      display: flex;
+      flex-wrap: wrap;
+      overflow-y: auto; /* Enable vertical scrolling */
+      color: white; /* Set the text color to white */
+    }
+
+    #store-title {
+      font-size: 24px;
+      font-weight: bold;
+      margin-bottom: 20px;
+      width: 100%;
+    }
+
+    .product {
+      flex: 1 1 400px;
+      padding: 10px;
+      border: px solid #ccc;
+      margin-right: 2px;
+      margin-bottom: 10px;
+      box-sizing: border-box;
+      background-image: linear-gradient(to right, pink, purple);
+      border-radius: 5px;
+      color: #FFFFFF; /* Set the text color to white */
+    }
+
+    .product-title {
+      font-size: 20px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    .product-description {
+      font-size: 12px;
+      line-height: 1.5;
+    }
+
+.product button {
+  background-image: linear-gradient(to right, pink, purple);
+  color: white;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 5px;
+  font-size: 14px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  display: inline-block;
+  text-decoration: none;
+  position: relative;
+  overflow: hidden;
+}
+
+.product button:after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 2px; /* Increase the height for a thicker line */
+  background: white;
+  bottom: 0;
+  left: 0;
+  transform: scaleX(0);
+  transition: transform 0.3s ease-in-out;
+}
+
+.product button:hover:after {
+  transform: scaleX(1);
+}
+
+    }
+  </style>
+  <script src="https://sellix.io/js/sdk.js"></script>
+  <script>
+    function openPaymentPage(product, reference, discord) {
+      var checkoutButton = document.createElement("button");
+      checkoutButton.setAttribute("data-sellix-product", product);
+      checkoutButton.setAttribute("data-sellix-custom-reference", reference);
+      checkoutButton.setAttribute("data-sellix-custom-discord", discord);
+      checkoutButton.type = "submit";
+      checkoutButton.alt = "Buy Now with sellix.io";
+      checkoutButton.innerText = "Purchase";
+
+      var form = document.createElement("form");
+      form.action = "https://sellix.io/embed/checkout";
+      form.method = "POST";
+      form.target = "_blank";
+
+      form.appendChild(checkoutButton);
+      document.body.appendChild(form);
+
+      form.submit();
+      document.body.removeChild(form);
+    }
+  </script>
+</head>
+<body>
+  <h1 id="title">Trixxy Store</h1>
+  <a id="discord-button" href="https://discord.gg/trixxy-gang">Discord</a>
+  <hr>
+  <div id="logo">TS</div>
+  <div id="store-page">
+    <h2 id="store-title">Store</h2>
+    <div class="product">
+      <h3 class="product-title">1 Week Booster Tool</h3>
+      <p class="product-description">Boost your Discord one week with this powerful tool. It enhances your Discord server.</p>
+      <button onclick="openPaymentPage('1 week booster tool', '1', '@𝕮𝖗𝖎𝖒𝖎𝖓𝖆𝖑#0001')">Purchase</button>
+    </div>
+    <div class="product">
+      <h3 class="product-title">1 Month Booster Tool</h3>
+      <p class="product-description">Take your gaming to the next level for an entire month with this exceptional booster tool. It enhances your Discord server.</p>
+      <button
+        data-sellix-product="6467cfff1c788"
+        type="submit"
+        alt="Buy Now with sellix.io"
+      >
+        Purchase
+      </button>
+    </div>
+    <!-- Add more product elements as needed -->
+  </div>
+</body>
+</html>
